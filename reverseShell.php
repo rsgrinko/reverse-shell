@@ -38,11 +38,7 @@
     chdir('/');
     umask(0);
 
-    try {
-        $socket = @fsockopen(HOST, PORT, $errorCode, $errorMessage, 30);
-    } catch (Throwable $t) {
-        $socket = false;
-    }
+    $socket = @fsockopen(HOST, PORT, $errorCode, $errorMessage, 30);
     if ($socket === false) {
         showLogData('Ошибка подключения: ' . $errorMessage . ' (' . $errorCode . ')');
         exit(1);
